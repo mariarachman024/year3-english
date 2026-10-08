@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparative Adjectives - Year 3 English Language | SK Puteri</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts for Child-Friendly Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Canvas Confetti for Celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <!-- Tailwind Configuration for Custom Pastel Palette -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pastelPink: {
+                            light: '#FFF0F5',
+                            DEFAULT: '#FFD1DC',
+                            dark: '#FF9EAA'
+                        },
+                        pastelPurple: {
+                            light: '#F3E8FF',
+                            DEFAULT: '#E6E6FA',
+                            dark: '#B39DDB'
+                        },
+                        pastelYellow: {
+                            light: '#FFFDE7',
+                            DEFAULT: '#FFF59D',
+                            dark: '#FFE082'
+                        },
+                        pastelBlue: {
+                            light: '#E0F7FA',
+                            DEFAULT: '#B2EBF2',
+                            dark: '#80DEEA'
+                        },
+                        pastelGreen: {
+                            light: '#E8F5E9',
+                            DEFAULT: '#C8E6C9',
+                            dark: '#A5D6A7'
+                        }
+                    },
+                    fontFamily: {
+                        fredoka: ['Fredoka', 'cursive', 'sans-serif'],
+                        quicksand: ['Quicksand', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #F8F9FA;
+            background-image: radial-gradient(#FFD1DC 1.5px, transparent 1.5px), radial-gradient(#B2EBF2 1.5px, #F8F9FA 1.5px);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+            user-select: none;
+        }
+
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Fredoka', cursive;
+        }
+
+        /* Cute Bouncy Hover Animations */
+        .bounce-hover:hover {
+            transform: scale(1.03) translateY(-3px);
+            transition: all 0.2s ease-in-out;
+        }
+
+        .bounce-click:active {
+            transform: scale(0.96);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(255, 158, 170, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(255, 158, 170, 0.8); }
+        }
+
+        .glow-effect {
+            animation: pulse-glow 3s infinite;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFF0F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FF9EAA;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between text-slate-800 p-2 sm:p-4">
+
+    <!-- TOP HEADER / NAV BAR -->
+    <header class="max-w-5xl mx-auto w-full bg-white/90 backdrop-blur border-4 border-pastelPurple-dark rounded-3xl p-3 sm:p-4 shadow-lg mb-4 flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center space-x-3">
+            <div class="w-12 h-12 bg-pastelPink rounded-2xl flex items-center justify-center text-pink-600 font-bold text-2xl shadow-sm">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div>
+                <span class="bg-purple-100 text-purple-700 font-bold text-xs px-2.5 py-0.5 rounded-full uppercase tracking-wide">Year 3 English</span>
+                <h1 class="text-xl sm:text-2xl font-bold text-purple-900 leading-none mt-1">Comparative Adjectives</h1>
+            </div>
+        </div>
+
+        <!-- Progress and Sound Controls -->
+        <div class="flex items-center space-x-2 sm:space-x-4 w-full sm:w-auto justify-between sm:justify-end">
+            <!-- Audio Toggle Button -->
+            <button id="soundToggleBtn" onclick="toggleSound()" class="p-2.5 bg-pastelYellow-light hover:bg-pastelYellow border-2 border-yellow-400 rounded-2xl text-yellow-800 transition bounce-hover flex items-center gap-1.5 font-bold text-sm" title="Toggle Sound Effects">
+                <i id="soundIcon" class="fa-solid fa-volume-high text-lg"></i>
+                <span class="hidden sm:inline">Sound</span>
+            </button>
+
+            <!-- TTS Read Page Button -->
+            <button onclick="readPageText()" class="p-2.5 bg-pastelBlue-light hover:bg-pastelBlue border-2 border-sky-400 rounded-2xl text-sky-800 transition bounce-hover flex items-center gap-1.5 font-bold text-sm" title="Listen to Page Text">
+                <i class="fa-solid fa-bullhorn text-lg"></i>
+                <span class="hidden sm:inline">Listen</span>
+            </button>
+
+            <!-- Page Counter Display -->
+            <div class="bg-pastelPurple-light border-2 border-purple-300 rounded-2xl px-4 py-1.5 text-center">
+                <span class="text-xs font-bold text-purple-600 block leading-tight">LESSON PAGE</span>
+                <span id="pageIndicator" class="text-lg font-bold text-purple-900 font-heading leading-tight">1 / 12</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- PROGRESS BAR -->
+    <div class="max-w-5xl mx-auto w-full mb-4 px-2">
+        <div class="w-full bg-white border-2 border-slate-200 h-4 rounded-full overflow-hidden p-0.5 shadow-inner">
+            <div id="progressBar" class="bg-gradient-to-r from-pink-400 via-purple-400 to-sky-400 h-full rounded-full transition-all duration-500" style="width: 8.33%;"></div>
+        </div>
+    </div>
+
+    <!-- MAIN LESSON CONTAINER -->
+    <main class="max-w-5xl mx-auto w-full flex-grow flex flex-col justify-center">
+        <!-- Card Frame -->
+        <div class="bg-white border-4 border-pastelPink-dark rounded-3xl p-4 sm:p-8 shadow-xl min-h-[480px] flex flex-col justify-between relative overflow-hidden">
+            
+            <!-- Dynamic Content Area -->
+            <div id="lessonContent" class="w-full flex-grow flex flex-col justify-center">
+                <!-- Page contents injected dynamically via JavaScript -->
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER NAVIGATION CONTROLS -->
+    <footer class="max-w-5xl mx-auto w-full mt-4 flex items-center justify-between gap-2 px-2">
+        <button id="btnHome" onclick="goToPage(1)" class="px-4 py-3 bg-white hover:bg-slate-50 border-3 border-slate-300 rounded-2xl font-bold text-slate-700 shadow bounce-hover bounce-click flex items-center gap-2 text-base sm:text-lg">
+            <i class="fa-solid fa-house text-pink-500"></i>
+            <span>HOME</span>
+        </button>
+
+        <div class="flex items-center space-x-3">
+            <button id="btnBack" onclick="changePage(-1)" class="px-5 py-3 bg-pastelPurple hover:bg-purple-200 border-3 border-purple-400 text-purple-900 rounded-2xl font-bold shadow bounce-hover bounce-click flex items-center gap-2 text-base sm:text-lg">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>BACK</span>
+            </button>
+
+            <button id="btnNext" onclick="changePage(1)" class="px-6 py-3 bg-pastelPink-dark hover:bg-pink-400 text-white rounded-2xl font-bold shadow-lg bounce-hover bounce-click flex items-center gap-2 text-base sm:text-lg font-heading">
+                <span>NEXT</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </footer>
+
+    <script>
+        // GLOBAL STATE
+        let currentPage = 1;
+        const totalPages = 12;
+        let soundEnabled = true;
+
+        // Interactive Page States
+        let fillBlanksAnswers = {};
+        let challengeAnswers = {};
+        let mcqAnswers = {};
+        let quizAnswers = {};
+        let page7Answers = {};
+        let page7Feedback = {};
+
+        // Audio Effects Synthesizer (Web Audio API)
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        let audioCtx = null;
+
+        function playSound(type) {
+            if (!soundEnabled) return;
+            try {
+                if (!audioCtx) audioCtx = new AudioCtx();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                const now = audioCtx.currentTime;
+
+                if (type === 'correct') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(523.25, now); // C5
+                    osc.frequency.exponentialRampToValueAtTime(659.25, now + 0.1); // E5
+                    osc.frequency.exponentialRampToValueAtTime(783.99, now + 0.2); // G5
+                    gain.gain.setValueAtTime(0.3, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+                    osc.start(now);
+                    osc.stop(now + 0.4);
+                } else if (type === 'incorrect') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, now); // A3
+                    osc.frequency.setValueAtTime(180, now + 0.15);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+                    osc.start(now);
+                    osc.stop(now + 0.35);
+                } else if (type === 'click') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(400, now);
+                    gain.gain.setValueAtTime(0.15, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+                    osc.start(now);
+                    osc.stop(now + 0.08);
+                }
+            } catch (e) {
+                console.log("Audio not supported or blocked");
+            }
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            const icon = document.getElementById('soundIcon');
+            const btn = document.getElementById('soundToggleBtn');
+            if (soundEnabled) {
+                icon.className = "fa-solid fa-volume-high text-lg";
+                btn.classList.remove('opacity-50');
+                playSound('click');
+            } else {
+                icon.className = "fa-solid fa-volume-xmark text-lg";
+                btn.classList.add('opacity-50');
+            }
+        }
+
+        // Text-to-Speech Helper
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); // Stop current speech
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-GB';
+                utterance.rate = 0.85; // Slightly slower for primary pupils
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // READ CURRENT PAGE CONTENT ACCESSIBILITY
+        function readPageText() {
+            playSound('click');
+            const contentContainer = document.getElementById('lessonContent');
+            if (!contentContainer) return;
+
+            // Extract plain text from heading and paragraph blocks
+            const texts = Array.from(contentContainer.querySelectorAll('h1, h2, h3, p, li, button, .read-me'))
+                .map(el => el.innerText)
+                .filter(t => t && t.trim().length > 0)
+                .join('. ');
+
+            speakText(texts);
+        }
+
+        // RENDER PAGE ROUTER
+        function renderPage() {
+            const container = document.getElementById('lessonContent');
+            const indicator = document.getElementById('pageIndicator');
+            const progressBar = document.getElementById('progressBar');
+
+            indicator.innerText = `${currentPage} / ${totalPages}`;
+            progressBar.style.width = `${(currentPage / totalPages) * 100}%`;
+
+            // Update Back / Next state
+            document.getElementById('btnBack').disabled = (currentPage === 1);
+            document.getElementById('btnBack').style.opacity = (currentPage === 1) ? '0.5' : '1';
+
+            let html = '';
+
+            switch (currentPage) {
+                case 1:
+                    html = renderPage1();
+                    break;
+                case 2:
+                    html = renderPage2();
+                    break;
+                case 3:
+                    html = renderPage3();
+                    break;
+                case 4:
+                    html = renderPage4();
+                    break;
+                case 5:
+                    html = renderPage5();
+                    break;
+                case 6:
+                    html = renderPage6();
+                    break;
+                case 7:
+                    html = renderPage7();
+                    break;
+                case 8:
+                    html = renderPage8();
+                    break;
+                case 9:
+                    html = renderPage9();
+                    break;
+                case 10:
+                    html = renderPage10();
+                    break;
+                case 11:
+                    html = renderPage11();
+                    break;
+                case 12:
+                    html = renderPage12();
+                    break;
+            }
+
+            container.innerHTML = html;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function changePage(delta) {
+            playSound('click');
+            currentPage += delta;
+            if (currentPage < 1) currentPage = 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+            renderPage();
+        }
+
+        function goToPage(page) {
+            playSound('click');
+            currentPage = page;
+            renderPage();
+        }
+
+        // --- PAGE GENERATOR FUNCTIONS ---
+
+        // PAGE 1: WELCOME
+        function renderPage1() {
+            return `
+                <div class="text-center py-4 flex flex-col items-center justify-center">
+                    <div class="inline-flex items-center gap-2 bg-yellow-100 text-yellow-800 border-2 border-yellow-300 font-bold px-4 py-1.5 rounded-full mb-3 shadow-sm animate-bounce">
+                        <i class="fa-solid fa-star text-amber-500"></i>
+                        <span>English Language • Year 3</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl font-black text-purple-900 mb-2 tracking-wide font-heading">
+                        COMPARATIVE ADJECTIVES
+                    </h1>
+                    <p class="text-xl sm:text-2xl font-bold text-pink-600 mb-6 font-heading">
+                        ✨ Let's Compare! ✨
+                    </p>
+
+                    <!-- Illustration Frame -->
+                    <div class="bg-pastelBlue-light border-4 border-sky-300 rounded-3xl p-6 mb-6 max-w-xl w-full flex items-center justify-around shadow-inner relative overflow-hidden">
+                        <!-- Animal 1: Elephant -->
+                        <div class="text-center bounce-hover cursor-pointer" onclick="speakText('Big Elephant')">
+                            <div class="text-6xl sm:text-7xl mb-2 animate-float">🐘</div>
+                            <span class="bg-white px-3 py-1 rounded-full font-bold text-slate-700 shadow-sm border border-slate-200 text-sm">BIG</span>
+                        </div>
+
+                        <div class="text-pink-500 font-extrabold text-2xl font-heading">
+                            VS
+                        </div>
+
+                        <!-- Animal 2: Cat -->
+                        <div class="text-center bounce-hover cursor-pointer" onclick="speakText('Small Cat')">
+                            <div class="text-4xl sm:text-5xl mb-2">🐱</div>
+                            <span class="bg-white px-3 py-1 rounded-full font-bold text-slate-700 shadow-sm border border-slate-200 text-sm">SMALL</span>
+                        </div>
+                    </div>
+
+                    <!-- Teacher Information Badge -->
+                    <div class="bg-pastelPurple-light border-2 border-purple-300 rounded-2xl p-4 max-w-md w-full mb-6 text-slate-700 text-sm sm:text-base flex items-center justify-center gap-3">
+                        <div class="w-10 h-10 bg-purple-400 text-white rounded-full flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                        </div>
+                        <div class="text-left">
+                            <p class="font-bold text-purple-900 leading-tight">Teacher: Maria A. Rachman</p>
+                            <p class="text-purple-700 font-medium">School: SK Puteri</p>
+                        </div>
+                    </div>
+
+                    <button onclick="goToPage(2)" class="px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-extrabold text-xl rounded-2xl shadow-xl bounce-hover bounce-click flex items-center gap-3 font-heading border-2 border-white">
+                        <span>START LESSON</span>
+                        <i class="fa-solid fa-circle-play text-2xl"></i>
+                    </button>
+                </div>
+            `;
+        }
+
+        // PAGE 2: WHAT ARE COMPARATIVE ADJECTIVES?
+        function renderPage2() {
+            return `
+                <div class="space-y-6">
+                    <div class="border-b-4 border-pastelPink pb-3 flex items-center gap-3">
+                        <div class="w-10 h-10 bg-pink-400 text-white rounded-2xl flex items-center justify-center font-bold text-xl">
+                            1
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-purple-900 font-heading">
+                            What Are Comparative Adjectives?
+                        </h2>
+                    </div>
+
+                    <div class="bg-pastelPurple-light border-3 border-purple-300 p-5 rounded-2xl text-slate-800 text-lg sm:text-xl font-medium leading-relaxed shadow-sm">
+                        <i class="fa-solid fa-lightbulb text-yellow-500 text-2xl mr-2"></i>
+                        Comparative adjectives are special words used to compare <span class="bg-yellow-200 px-2 py-0.5 rounded-lg font-bold text-purple-900 border border-yellow-400">TWO</span> people, animals, or things!
+                    </div>
+
+                    <!-- Visual Example Card -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Example 1 -->
+                        <div class="bg-pink-50 border-3 border-pink-300 rounded-2xl p-5 text-center bounce-hover shadow-sm flex flex-col items-center justify-between">
+                            <div class="flex items-center justify-center gap-4 my-2">
+                                <span class="text-6xl">🐘</span>
+                                <i class="fa-solid fa-greater-than text-pink-400 text-xl font-black"></i>
+                                <span class="text-4xl">🐱</span>
+                            </div>
+                            <p class="text-lg sm:text-xl font-bold text-slate-800 mt-2">
+                                The elephant is <span class="bg-pink-200 text-pink-900 px-2 py-1 rounded-lg border border-pink-400 font-extrabold">bigger than</span> the cat.
+                            </p>
+                            <button onclick="speakText('The elephant is bigger than the cat')" class="mt-3 text-xs bg-pink-200 hover:bg-pink-300 text-pink-800 font-bold px-3 py-1 rounded-full transition">
+                                <i class="fa-solid fa-volume-high mr-1"></i> Listen
+                            </button>
+                        </div>
+
+                        <!-- Example 2 -->
+                        <div class="bg-sky-50 border-3 border-sky-300 rounded-2xl p-5 text-center bounce-hover shadow-sm flex flex-col items-center justify-between">
+                            <div class="flex items-center justify-center gap-4 my-2">
+                                <span class="text-4xl">🐱</span>
+                                <i class="fa-solid fa-less-than text-sky-400 text-xl font-black"></i>
+                                <span class="text-6xl">🐘</span>
+                            </div>
+                            <p class="text-lg sm:text-xl font-bold text-slate-800 mt-2">
+                                The cat is <span class="bg-sky-200 text-sky-900 px-2 py-1 rounded-lg border border-sky-400 font-extrabold">smaller than</span> the elephant.
+                            </p>
+                            <button onclick="speakText('The cat is smaller than the elephant')" class="mt-3 text-xs bg-sky-200 hover:bg-sky-300 text-sky-800 font-bold px-3 py-1 rounded-full transition">
+                                <i class="fa-solid fa-volume-high mr-1"></i> Listen
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-yellow-50 border-2 border-yellow-300 rounded-2xl p-4 text-center">
+                        <p class="text-base font-bold text-yellow-900">
+                            🌟 Key Rule: Notice how we add <span class="underline decoration-pink-500 font-black text-pink-600">-er</span> and use <span class="underline decoration-purple-500 font-black text-purple-700">than</span>!
+                        </p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // PAGE 3: RULE 1 - SHORT ADJECTIVES
+        function renderPage3() {
+            const shortAdjectives = [
+                { word: 'tall', comp: 'taller', icon: '🦒' },
+                { word: 'small', comp: 'smaller', icon: '🐭' },
+                { word: 'fast', comp: 'faster', icon: 'Cheetah 🐆' },
+                { word: 'slow', comp: 'slower', icon: '🐢' },
+                { word: 'old', comp: 'older', icon: '👴' },
+                { word: 'young', comp: 'younger', icon: '👶' },
+                { word: 'short', comp: 'shorter', icon: '🧍' },
+                { word: 'long', comp: 'longer', icon: '📏' }
+            ];
+
+            return `
+                <div class="space-y-5">
+                    <div class="border-b-4 border-pastelPurple pb-2 flex items-center gap-3">
+                        <div class="w-10 h-10 bg-purple-500 text-white rounded-2xl flex items-center justify-center font-bold text-xl">
+                            2
+                        </div>
+                        <div>
+                            <h2 class="text-2xl sm:text-3xl font-bold text-purple-900 font-heading">
+                                Rule 1: Short Adjectives
+                            </h2>
+                            <p class="text-sm font-semibold text-purple-600">For many short adjectives, simply add <span class="bg-purple-200 text-purple-900 px-2 py-0.5 rounded font-bold">-er</span>!</p>
+                        </div>
+                    </div>
+
+                    <!-- Adjective Flashcard Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        ${shortAdjectives.map(item => `
+                            <div onclick="speakText('${item.word}, ${item.comp}')" class="bg-purple-50 hover:bg-purple-100 border-2 border-purple-200 rounded-2xl p-3 text-center cursor-pointer bounce-hover shadow-sm">
+                                <div class="text-2xl mb-1">${item.icon.includes(' ') ? item.icon.split(' ')[1] : item.icon}</div>
+                                <div class="text-slate-500 font-medium text-xs uppercase tracking-wider">${item.word}</div>
+                                <div class="text-purple-900 font-extrabold text-lg font-heading">${item.comp}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <!-- Sentence Examples -->
+                    <div class="bg-pastelYellow-light border-3 border-yellow-300 rounded-2xl p-4 space-y-3">
+                        <h3 class="font-bold text-yellow-900 text-base flex items-center gap-2 font-heading">
+                            <i class="fa-solid fa-comment-dots text-amber-500"></i> Sentence Examples:
+                        </h3>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm sm:text-base">
+                            <div class="bg-white p-3 rounded-xl border border-yellow-200 font-bold text-slate-800 flex items-center justify-between">
+                                <span>👦 Ali is <span class="text-pink-600">taller than</span> Ben. 👦</span>
+                                <button onclick="speakText('Ali is taller than Ben')" class="text-purple-600 hover:text-purple-800"><i class="fa-solid fa-volume-high"></i></button>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-yellow-200 font-bold text-slate-800 flex items-center justify-between">
+                                <span>🐇 A rabbit is <span class="text-pink-600">faster than</span> a turtle. 🐢</span>
+                                <button onclick="speakText('A rabbit is faster than a turtle')" class="text-purple-600 hover:text-purple-800"><i class="fa-solid fa-volume-high"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // PAGE 4: SPELLING RULES
+        function renderPage4() {
+            return `
+                <div class="space-y-5">
+                    <div class="border-b-4 border-pastelYellow pb-2 flex items-center gap-3">
+                        <div class="w-10 h-10 bg-amber-400 text-white rounded-2xl flex items-center justify-center font-bold text-xl">
+                            3
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-amber-900 font-heading">
+                            Spelling Rules for Short Words
+                        </h2>
+                    </div>
+
+                    <!-- 4 Colourful Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Rule 1 -->
+                        <div class="bg-pink-50 border-3 border-pink-300 rounded-2xl p-4 shadow-sm">
+                            <span class="bg-pink-200 text-pink-800 text-xs font-bold px-2.5 py-1 rounded-full uppercase">Rule 1</span>
+                            <h3 class="font-bold text-pink-900 text-base mt-2 font-heading">Most Short Adjectives</h3>
+                            <p class="text-xs text-slate-600 mb-2">Just add <strong>-er</strong></p>
+                            <div class="bg-white rounded-xl p-2.5 border border-pink-200 flex items-center justify-between font-bold">
+                                <span>tall ➔ <span class="text-pink-600 font-extrabold">taller</span></span>
+                                <span>small ➔ <span class="text-pink-600 font-extrabold">smaller</span></span>
+                            </div>
+                        </div>
+
+                        <!-- Rule 2 -->
+                        <div class="bg-purple-50 border-3 border-purple-300 rounded-2xl p-4 shadow-sm">
+                            <span class="bg-purple-200 text-purple-800 text-xs font-bold px-2.5 py-1 rounded-full uppercase">Rule 2</span>
+                            <h3 class="font-bold text-purple-900 text-base mt-2 font-heading">Adjectives ending in 'e'</h3>
+                            <p class="text-xs text-slate-600 mb-2">Just add <strong>-r</strong></p>
+                            <div class="bg-white rounded-xl p-2.5 border border-purple-200 flex items-center justify-between font-bold">
+                                <span>large ➔ <span class="text-purple-600 font-extrabold">larger</span></span>
+                                <span>nice ➔ <span class="text-purple-600 font-extrabold">nicer</span></span>
+                            </div>
+                        </div>
+
+                        <!-- Rule 3 -->
+                        <div class="bg-sky-50 border-3 border-sky-300 rounded-2xl p-4 shadow-sm">
+                            <span class="bg-sky-200 text-sky-800 text-xs font-bold px-2.5 py-1 rounded-full uppercase">Rule 3</span>
+                            <h3 class="font-bold text-sky-900 text-base mt-2 font-heading">Ending in consonant + 'y'</h3>
+                            <p class="text-xs text-slate-600 mb-2">Change <strong>y</strong> to <strong>-ier</strong></p>
+                            <div class="bg-white rounded-xl p-2.5 border border-sky-200 flex items-center justify-between font-bold">
+                                <span>happy ➔ <span class="text-sky-600 font-extrabold">happier</span></span>
+                                <span>easy ➔ <span class="text-sky-600 font-extrabold">easier</span></span>
+                            </div>
+                        </div>
+
+                        <!-- Rule 4 -->
+                        <div class="bg-amber-50 border-3 border-amber-300 rounded-2xl p-4 shadow-sm">
+                            <span class="bg-amber-200 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-full uppercase">Rule 4</span>
+                            <h3 class="font-bold text-amber-900 text-base mt-2 font-heading">Double Consonant (CVC)</h3>
+                            <p class="text-xs text-slate-600 mb-2">Double last letter + <strong>-er</strong></p>
+                            <div class="bg-white rounded-xl p-2.5 border border-amber-200 flex items-center justify-between font-bold">
+                                <span>big ➔ <span class="text-amber-600 font-extrabold">bigger</span></span>
+                                <span>hot ➔ <span class="text-amber-600 font-extrabold">hotter</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // PAGE 5: RULE 2 - MORE + ADJECTIVE
+        function renderPage5() {
+            const longAdjectives = [
+                { base: 'beautiful', comp: 'more beautiful', icon: '👗' },
+                { base: 'expensive', comp: 'more expensive', icon: '💎' },
+                { base: 'interesting', comp: 'more interesting', icon: '📚' },
+                { base: 'comfortable', comp: 'more comfortable', icon: '🛋️' }
+            ];
+
+            return `
+                <div class="space-y-5">
+                    <div class="border-b-4 border-pastelBlue pb-2 flex items-center gap-3">
+                        <div class="w-10 h-10 bg-sky-500 text-white rounded-2xl flex items-center justify-center font-bold text-xl">
+                            4
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-sky-900 font-heading">
+                            Rule 2: MORE + Adjective
+                        </h2>
+                    </div>
+
+                    <div class="bg-sky-50 border-3 border-sky-300 p-4 rounded-2xl text-slate-800 text-base sm:text-lg">
+                        <p class="font-bold text-sky-900 mb-1">
+                            For many longer adjectives, use MORE + adjective.
+                        </p>
+                        <div class="bg-white p-3 rounded-xl text-center font-extrabold text-xl text-purple-700 border-2 border-purple-300 my-2 shadow-sm font-heading">
+                            <span class="text-pink-600 text-2xl">MORE</span> + ADJECTIVE
+                        </div>
+                    </div>
+
+                    <!-- Example Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        ${longAdjectives.map(item => `
+                            <div onclick="speakText('${item.comp}')" class="bg-white hover:bg-slate-50 border-2 border-slate-200 rounded-2xl p-3 flex items-center gap-4 cursor-pointer bounce-hover shadow-sm">
+                                <span class="text-4xl">${item.icon}</span>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-400 uppercase">${item.base}</p>
+                                    <p class="text-base sm:text-lg font-black text-purple-900 font-heading">
+                                        <span class="text-pink-600">more</span> ${item.base}
+                                    </p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <!-- Sentence Example -->
+                    <div class="bg-pink-100 border-3 border-pink-300 rounded-2xl p-4 text-center">
+                        <p class="text-base sm:text-lg font-bold text-slate-800">
+                            👗 The red dress is <span class="bg-pink-300 text-pink-900 px-2 py-0.5 rounded-lg border border-pink-400 font-black">more beautiful than</span> the blue dress. 👗
+                        </p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // PAGE 6: REMEMBER "THAN"
+        function renderPage6() {
+            return `
+                <div class="space-y-6 text-center">
+                    <div class="inline-block bg-yellow-200 border-3 border-yellow-400 rounded-3xl px-6 py-2 shadow-md">
+                        <h2 class="text-2xl sm:text-4xl font-black text-yellow-900 font-heading tracking-wide">
+                            ⚠️ DON'T FORGET! ⚠️
+                        </h2>
+                    </div>
+
+                    <!-- Mascot Banner -->
+                    <div class="bg-gradient-to-r from-purple-100 via-pink-100 to-yellow-100 border-4 border-purple-300 rounded-3xl p-6 shadow-md relative flex flex-col items-center">
+                        <div class="text-6xl sm:text-7xl mb-2 animate-bounce">
+                            🐱💬
+                        </div>
+                        <div class="bg-white border-4 border-pink-400 rounded-2xl p-4 shadow-lg max-w-lg">
+                            <p class="text-2xl sm:text-3xl font-black text-pink-600 font-heading">
+                                Always put <span class="bg-yellow-300 text-purple-900 px-3 py-1 rounded-xl border-2 border-purple-500 inline-block transform hover:scale-110 transition">THAN</span> after the comparative word!
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Sentence Builder Examples -->
+                    <div class="grid grid-cols-1 gap-3 max-w-2xl mx-auto text-left text-sm sm:text-base font-bold">
+                        <div class="bg-white p-3 rounded-2xl border-2 border-purple-200 flex items-center justify-between shadow-sm">
+                            <span>🦁 The lion is <span class="text-pink-600 font-extrabold">stronger</span> <span class="bg-yellow-200 px-2 py-0.5 rounded text-purple-900 border border-yellow-400">THAN</span> the cat.</span>
+                            <button onclick="speakText('The lion is stronger than the cat')" class="text-purple-600"><i class="fa-solid fa-volume-high"></i></button>
+                        </div>
+
+                        <div class="bg-white p-3 rounded-2xl border-2 border-purple-200 flex items-center justify-between shadow-sm">
+                            <span>🚗 The car is <span class="text-pink-600 font-extrabold">faster</span> <span class="bg-yellow-200 px-2 py-0.5 rounded text-purple-900 border border-yellow-400">THAN</span> the bicycle.</span>
+                            <button onclick="speakText('The car is faster than the bicycle')" class="text-purple-600"><i class="fa-solid fa-volume-high"></i></button>
+                        </div>
+
+                        <div class="bg-white p-3 rounded-2xl border-2 border-purple-200 flex items-center justify-between shadow-sm">
+                            <span>🍉 The watermelon is <span class="text-pink-600 font-extrabold">bigger</span> <span class="bg-yellow-200 px-2 py-0.5 rounded text-purple-900 border border-yellow-400">THAN</span> the apple.</span>
+                            <button onclick="speakText('The watermelon is bigger than the apple')" class="text-purple-600"><i class="fa-solid fa-volume-high"></i></button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // PAGE 7: LET'S COMPARE! (PRACTICE EXAMPLES)
+        const page7Questions = [
+            {
+                icons: "🐘 + 🐱",
+                word: "BIG",
+                sentenceBefore: "The elephant is ",
+                sentenceAfter: " than the cat.",
+                answer: "bigger"
+            },
+            {
+                icons: "🐢 + 🐇",
+                word: "SLOW",
+                sentenceBefore: "The turtle is ",
+                sentenceAfter: " than the rabbit.",
+                answer: "slower"
+            },
+            {
+                icons: "🚌 + 🚲",
+                word: "FAST",
+                sentenceBefore: "The bus is ",
+                sentenceAfter: " than the bicycle.",
+                answer: "faster"
+            }
+        ];
+
+        function renderPage7() {
+            return `
+                <div class="space-y-5">
+                    <div class="border-b-4 border-pastelPink pb-2 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-pink-500 text-white rounded-2xl flex items-center justify-center font-bold text-xl">
+                                5
+                            </div>
+                            <h2 class="text-2xl sm:text-3xl font-bold text-pink-900 font-heading">
+                                Let's Compare!
+                            </h2>
+                        </div>
+                        <span class="bg-pink-100 text-pink-800 font-bold text-xs px-3 py-1 rounded-full">Guided Practice</span>
+                    </div>
+
+                    <p class="text-slate-600 font-bold text-sm">Type the correct comparative adjective and click Check:</p>
+
+                    <div class="space-y-4">
+                        ${page7Questions.map((item, idx) => `
+                            <div class="bg-purple-50 border-3 border-purple-200 rounded-2xl p-4 shadow-sm">
+                                <div class="flex items-center justify-between border-b border-purple-200 pb-2 mb-3">
+                                    <span class="text-2xl">${item.icons}</span>
+                                    <span class="bg-purple-200 text-purple-900 text-xs font-bold px-3 py-1 rounded-full">Word: ${item.word}</span>
+                                </div>
+                                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                                    <div class="text-base sm:text-lg font-bold text-slate-800 flex-grow flex flex-wrap items-center gap-1">
+                                        <span>${item.sentenceBefore}</span>
+                                        <input type="text" id="p7Input-${idx}" value="${page7Answers[idx] || ''}" oninput="page7Answers[${idx}] = this.value" class="w-28 px-2 py-1 border-2 border-purple-300 rounded-xl text-center font-extrabold text-purple-900 focus:outline-none focus:border-purple-500 bg-white" placeholder="...">
+                                        <span>${item.sentenceAfter}</span>
+                                    </div>
+                                    <button onclick="checkPage7(${idx})" class="px-4 py-2 bg-pink-500 hover:bg-pink-600 text-white font-extrabold rounded-xl shadow bounce-hover bounce-click text-sm font-heading shrink-0">
+                                        CHECK
+                                    </button>
+                                </div>
+                                <div id="p7Feedback-${idx}" class="mt-2 text-sm font-bold min-h-[20px]">
+                                    ${page7Feedback[idx] || ''}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function checkPage7(idx) {
+            const val = (page7Answers[idx] || '').trim().toLowerCase();
+            const correctVal = page7Questions[idx].answer.toLowerCase();
+            const feedbackEl = document.getElementById(`p7Feedback-${idx}`);
+
+            if (val === correctVal) {
+                playSound('correct');
+                const msg = '<span class="text-emerald-600">🎉 Excellent! That\'s correct!</span>';
+                page7Feedback[idx] = msg;
+                if (feedbackEl) feedbackEl.innerHTML = msg;
+            } else {
+                playSound('incorrect');
+                const msg = '<span class="text-rose-600">💡 Try again! Remember to use the comparative form.</span>';
+                page7Feedback[idx] = msg;
+                if (feedbackEl) feedbackEl.innerHTML = msg;
+            }
+        }
+
+        // PAGE 8: CHOOSE THE CORRECT ANSWER (5 MCQs)
+        const mcqQuestions = [
+            { q: "1. A giraffe is _______ than a goat.", options: ["tall", "taller", "tallest"], ans: 1 },
+            { q: "2. An elephant is _______ than a dog.", options: ["bigger", "big", "more big"], ans: 0 },
+            { q: "3. A sports car is _______ than a bicycle.", options: ["fast", "more fast", "faster"], ans: 2 },
+            { q: "4. This dress is _______ than that shirt.", options: ["beautiful", "more beautiful", "beautifuler"], ans: 1 },
+            { q: "5. A turtle is _______ than a rabbit.", options: ["slower", "slow", "more slow"], ans: 0 }
+        ];
+
+        function renderPage8() {
+            return `
+                <div class="space-y-5">
+                    <div class="border-b-4 border-pastelPurple pb-2 flex items-center justify-between">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-purple-900 font-heading">
+                            Choose the Correct Answer
+                        </h2>
+                        <span class="bg-purple-100 text-purple-800 font-bold text-xs px-3 py-1 rounded-full">Interactive Activity</span>
+                    </div>
+
+                    <div class="space-y-4">
+                        ${mcqQuestions.map((item, qIdx) => `
+                            <div class="bg-slate-50 border-2 border-slate-200 rounded-2xl p-4 shadow-sm">
+                                <p class="font-bold text-slate-800 text-base sm:text-lg mb-3">${item.q}</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                                    ${item.options.map((opt, optIdx) => {
+                                        const selected = mcqAnswers[qIdx] === optIdx;
+                                        const isCorrect = item.ans === optIdx;
+                                        let btnClass = "bg-white border-2 border-slate-300 hover:border-purple-400 text-slate-700";
+                                        
+                                        if (mcqAnswers[qIdx] !== undefined) {
+                                            if (selected) {
+                                                btnClass = isCorrect ? "bg-emerald-100 border-2 border-emerald-500 text-emerald-900 font-bold" : "bg-rose-100 border-2 border-rose-500 text-rose-900 font-bold";
+                                            }
+                                        }
+
+                                        return `
+                                            <button onclick="handleMCQSelect(${qIdx}, ${optIdx})" class="p-2.5 rounded-xl text-sm font-bold transition text-left bounce-click ${btnClass}">
+                                                ${String.fromCharCode(65 + optIdx)}. ${opt}
+                                            </button>
+                                        `;
+                                    }).join('')}
+                                </div>
+                                <div id="mcqFeedback-${qIdx}" class="mt-2 text-sm font-bold min-h-[20px]">
+                                    ${mcqAnswers[qIdx] !== undefined ? (mcqAnswers[qIdx] === item.ans ? '<span class="text-emerald-600">🎉 Excellent! Great job!</span>' : '<span class="text-rose-600">💡 Try again! Look at the two things carefully.</span>') : ''}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function handleMCQSelect(qIdx, optIdx) {
+            mcqAnswers[qIdx] = optIdx;
+            const isCorrect = (optIdx === mcqQuestions[qIdx].ans);
+            playSound(isCorrect ? 'correct' : 'incorrect');
+            renderPage();
+        }
+
+        // PAGE 9: FILL IN THE BLANKS
+        const fillBlanksQuestions = [
+            { text: "1. A car is __________ than a bicycle.", word: "fast", answer: "faster" },
+            { text: "2. An elephant is __________ than a dog.", word: "big", answer: "bigger" },
+            { text: "3. Sarah is __________ than Ali.", word: "tall", answer: "taller" },
+            { text: "4. A rabbit is __________ than a turtle.", word: "fast", answer: "faster" },
+            { text: "5. My pencil is __________ than your pencil.", word: "long", answer: "longer" }
+        ];
+
+        function renderPage9() {
+            return `
+                <div class="space-y-5">
+                    <div class="border-b-4 border-pastelYellow pb-2 flex items-center justify-between">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-amber-900 font-heading">
+                            Fill in the Blanks
+                        </h2>
+                        <span class="bg-amber-100 text-amber-800 font-bold text-xs px-3 py-1 rounded-full">Type the comparative word</span>
+                    </div>
+
+                    <p class="text-slate-600 font-bold text-sm">Change the word in brackets ( ) into its comparative form:</p>
+
+                    <div class="space-y-3">
+                        ${fillBlanksQuestions.map((q, idx) => `
+                            <div class="bg-yellow-50 border-2 border-yellow-200 p-3.5 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 shadow-sm">
+                                <div class="font-bold text-slate-800 text-base">
+                                    ${q.text.replace('__________', `<input type="text" id="fillInput-${idx}" value="${fillBlanksAnswers[idx] || ''}" oninput="fillBlanksAnswers[${idx}] = this.value" class="w-28 px-2 py-1 border-2 border-amber-300 rounded-lg text-center font-extrabold text-purple-900 focus:outline-none focus:border-purple-500 bg-white" placeholder="...">`)}
+                                </div>
+                                <span class="bg-white border border-amber-300 px-3 py-1 rounded-full text-xs font-bold text-amber-800">
+                                    (${q.word})
+                                </span>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div class="flex items-center justify-between pt-2">
+                        <button onclick="checkFillInBlanks()" class="px-6 py-3 bg-amber-400 hover:bg-amber-500 text-amber-950 font-extrabold rounded-2xl shadow bounce-hover bounce-click font-heading">
+                            <i class="fa-solid fa-check-double mr-1"></i> CHECK ANSWERS
+                        </button>
+                        <div id="fillFeedback" class="font-bold text-base"></div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function checkFillInBlanks() {
+            let correctCount = 0;
+            fillBlanksQuestions.forEach((q, idx) => {
+                const val = (fillBlanksAnswers[idx] || '').trim().toLowerCase();
+                if (val === q.answer.toLowerCase()) {
+                    correctCount++;
+                }
+            });
+
+            const feedbackEl = document.getElementById('fillFeedback');
+            if (correctCount === fillBlanksQuestions.length) {
+                playSound('correct');
+                feedbackEl.innerHTML = `<span class="text-emerald-600 font-extrabold">🎉 All correct! Fantastic work!</span>`;
+            } else {
+                playSound('incorrect');
+                feedbackEl.innerHTML = `<span class="text-amber-800 font-bold">You got ${correctCount}/${fillBlanksQuestions.length} correct. Check carefully and try again!</span>`;
+            }
+        }
+
+        // PAGE 10: CHALLENGE
+        const challengePrompts = [
+            {
+                items: "🍎 Apple + 🍉 Watermelon",
+                word: "BIG",
+                options: [
+                    "The watermelon is bigger than the apple.",
+                    "The apple is bigger than the watermelon.",
+                    "The watermelon is big than the apple."
+                ],
+                correct: 0
+            },
+            {
+                items: "🦒 Giraffe + 🐐 Goat",
+                word: "TALL",
+                options: [
+                    "The goat is taller than the giraffe.",
+                    "The giraffe is taller than the goat.",
+                    "The giraffe is tall than the goat."
+                ],
+                correct: 1
+            },
+            {
+                items: "✈️ Aeroplane + 🚆 Train",
+                word: "FAST",
+                options: [
+                    "The aeroplane is faster than the train.",
+                    "The train is faster than the aeroplane.",
+                    "The aeroplane is fast than the train."
+                ],
+                correct: 0
+            }
+        ];
+
+        function renderPage10() {
+            return `
+                <div class="space-y-5">
+                    <div class="border-b-4 border-pastelPink pb-2 flex items-center justify-between">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-pink-900 font-heading">
+                            🏆 COMPARATIVE CHALLENGE
+                        </h2>
+                        <span class="bg-pink-100 text-pink-800 font-bold text-xs px-3 py-1 rounded-full">Sentence Challenge</span>
+                    </div>
+
+                    <p class="text-slate-600 font-bold text-sm">Choose the correct comparative sentence for each pair:</p>
+
+                    <div class="space-y-4">
+                        ${challengePrompts.map((item, idx) => `
+                            <div class="bg-pink-50 border-3 border-pink-200 rounded-2xl p-4 shadow-sm">
+                                <div class="flex items-center justify-between mb-3 border-b border-pink-200 pb-2">
+                                    <span class="font-extrabold text-slate-800 text-lg">${item.items}</span>
+                                    <span class="bg-pink-200 text-pink-900 text-xs font-bold px-3 py-1 rounded-full">Use: ${item.word}</span>
+                                </div>
+                                <div class="space-y-2">
+                                    ${item.options.map((opt, optIdx) => {
+                                        const selected = challengeAnswers[idx] === optIdx;
+                                        const isCorrect = item.correct === optIdx;
+                                        let btnStyle = "bg-white border-2 border-pink-200 text-slate-700";
+
+                                        if (challengeAnswers[idx] !== undefined) {
+                                            if (selected) {
+                                                btnStyle = isCorrect ? "bg-emerald-100 border-2 border-emerald-500 text-emerald-900 font-bold" : "bg-rose-100 border-2 border-rose-500 text-rose-900 font-bold";
+                                            }
+                                        }
+
+                                        return `
+                                            <button onclick="handleChallengeSelect(${idx}, ${optIdx})" class="w-full text-left p-2.5 rounded-xl text-sm font-bold transition bounce-click ${btnStyle}">
+                                                ${opt}
+                                            </button>
+                                        `;
+                                    }).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function handleChallengeSelect(cIdx, optIdx) {
+            challengeAnswers[cIdx] = optIdx;
+            const isCorrect = (optIdx === challengePrompts[cIdx].correct);
+            playSound(isCorrect ? 'correct' : 'incorrect');
+            renderPage();
+        }
+
+        // PAGE 11: QUICK REVIEW
+        function renderPage11() {
+            return `
+                <div class="space-y-5">
+                    <div class="border-b-4 border-pastelPurple pb-2 text-center">
+                        <h2 class="text-3xl font-black text-purple-900 font-heading">
+                            🌟 QUICK REVIEW 🌟
+                        </h2>
+                        <p class="text-purple-600 font-bold text-sm">Remember these rules before taking the final quiz!</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                        <div class="bg-purple-50 border-2 border-purple-300 rounded-2xl p-3.5 shadow-sm">
+                            <h3 class="font-extrabold text-purple-900 text-base mb-1 font-heading">1. Compare TWO Things</h3>
+                            <p class="text-slate-700">Comparative adjectives compare 2 people, animals, or objects.</p>
+                        </div>
+
+                        <div class="bg-pink-50 border-2 border-pink-300 rounded-2xl p-3.5 shadow-sm">
+                            <h3 class="font-extrabold text-pink-900 text-base mb-1 font-heading">2. Short Adjectives (-er)</h3>
+                            <p class="text-slate-700">tall ➔ <span class="font-bold text-pink-600">taller</span> | small ➔ <span class="font-bold text-pink-600">smaller</span></p>
+                        </div>
+
+                        <div class="bg-sky-50 border-2 border-sky-300 rounded-2xl p-3.5 shadow-sm">
+                            <h3 class="font-extrabold text-sky-900 text-base mb-1 font-heading">3. Spelling Changes</h3>
+                            <p class="text-slate-700">happy ➔ <span class="font-bold text-sky-600">happier</span> | big ➔ <span class="font-bold text-sky-600">bigger</span></p>
+                        </div>
+
+                        <div class="bg-yellow-50 border-2 border-yellow-300 rounded-2xl p-3.5 shadow-sm">
+                            <h3 class="font-extrabold text-yellow-900 text-base mb-1 font-heading">4. Long Words (MORE)</h3>
+                            <p class="text-slate-700">beautiful ➔ <span class="font-bold text-amber-700">more beautiful</span></p>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-pink-400 to-purple-500 text-white rounded-2xl p-4 text-center shadow-md font-heading">
+                        <p class="text-xl font-black">ALWAYS REMEMBER:</p>
+                        <p class="text-2xl font-black text-yellow-300 mt-1">COMPARATIVE + THAN</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // PAGE 12: QUIZ & SCORE (10 QUESTIONS)
+        const finalQuizQuestions = [
+            { q: "1. An elephant is _______ than a cat.", options: ["bigger", "more big", "big"], ans: 0 },
+            { q: "2. Ali is _______ than Ben.", options: ["tall", "taller", "more tall"], ans: 1 },
+            { q: "3. A rabbit is _______ than a turtle.", options: ["fast", "more fast", "faster"], ans: 2 },
+            { q: "4. A turtle is _______ than a rabbit.", options: ["slower", "slow", "more slow"], ans: 0 },
+            { q: "5. The red dress is _______ than the blue dress.", options: ["beautifuler", "more beautiful", "beautiful"], ans: 1 },
+            { q: "6. Don't forget to use _______ after comparative adjectives!", options: ["then", "than", "that"], ans: 1 },
+            { q: "7. The word 'happy' becomes _______ in comparative form.", options: ["happyer", "more happy", "happier"], ans: 2 },
+            { q: "8. A car is _______ than a bicycle.", options: ["faster", "fast", "more fast"], ans: 0 },
+            { q: "9. A lion is _______ than a cat.", options: ["strong", "stronger", "more strong"], ans: 1 },
+            { q: "10. My pencil is _______ than your pencil.", options: ["more long", "longer", "long"], ans: 1 }
+        ];
+
+        let quizSubmitted = false;
+
+        function renderPage12() {
+            if (!quizSubmitted) {
+                return `
+                    <div class="space-y-5">
+                        <div class="border-b-4 border-pastelPink pb-2 flex items-center justify-between">
+                            <h2 class="text-2xl sm:text-3xl font-bold text-pink-900 font-heading">
+                                🌟 FINAL QUIZ (10 Questions)
+                            </h2>
+                            <span class="bg-pink-100 text-pink-800 font-bold text-xs px-3 py-1 rounded-full">Test Your Knowledge</span>
+                        </div>
+
+                        <div class="space-y-4 max-h-[340px] overflow-y-auto pr-2">
+                            ${finalQuizQuestions.map((q, qIdx) => `
+                                <div class="bg-purple-50 border-2 border-purple-200 rounded-2xl p-3.5 shadow-sm">
+                                    <p class="font-bold text-slate-800 text-sm sm:text-base mb-2">${q.q}</p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                                        ${q.options.map((opt, optIdx) => `
+                                            <button onclick="quizAnswers[${qIdx}] = ${optIdx}; renderPage();" class="p-2 rounded-xl text-xs sm:text-sm font-bold transition text-left ${quizAnswers[qIdx] === optIdx ? 'bg-purple-600 text-white border-2 border-purple-700' : 'bg-white border border-slate-300 text-slate-700 hover:bg-purple-100'}">
+                                                ${String.fromCharCode(65 + optIdx)}. ${opt}
+                                            </button>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <button onclick="submitQuiz()" class="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-lg rounded-2xl shadow-lg bounce-hover bounce-click font-heading border-2 border-emerald-300">
+                            SUBMIT FINAL QUIZ 🎉
+                        </button>
+                    </div>
+                `;
+            } else {
+                // Calculate Score
+                let score = 0;
+                finalQuizQuestions.forEach((q, idx) => {
+                    if (quizAnswers[idx] === q.ans) score++;
+                });
+
+                const percentage = Math.round((score / finalQuizQuestions.length) * 100);
+                let badge = "";
+                let message = "";
+                let colorClass = "";
+
+                if (percentage >= 90) {
+                    badge = "🏆 Amazing!";
+                    message = "You are a Comparative Adjective Champion!";
+                    colorClass = "text-yellow-600 bg-yellow-100 border-yellow-400";
+                    confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+                } else if (percentage >= 70) {
+                    badge = "🌟 Great job!";
+                    message = "Keep practising! You are doing really well!";
+                    colorClass = "text-purple-600 bg-purple-100 border-purple-400";
+                } else {
+                    badge = "💪 Good try!";
+                    message = "Let's practise again to become a champion!";
+                    colorClass = "text-sky-600 bg-sky-100 border-sky-400";
+                }
+
+                return `
+                    <div class="text-center py-4 space-y-5 flex flex-col items-center justify-center">
+                        <div class="inline-block border-4 rounded-3xl p-6 ${colorClass} max-w-md w-full shadow-lg">
+                            <span class="text-5xl block mb-2">${badge.split(' ')[0]}</span>
+                            <h2 class="text-3xl font-black font-heading mb-1">${badge}</h2>
+                            <p class="font-bold text-lg mb-3">${message}</p>
+                            
+                            <div class="bg-white rounded-2xl p-4 border border-slate-200">
+                                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">YOUR SCORE</span>
+                                <span class="text-4xl font-black text-purple-900 font-heading">${percentage}%</span>
+                                <p class="text-xs font-bold text-slate-600 mt-1">(${score} out of 10 correct)</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <button onclick="quizSubmitted = false; quizAnswers = {}; renderPage();" class="px-6 py-3 bg-pastelYellow border-2 border-yellow-400 text-yellow-900 rounded-2xl font-bold shadow bounce-hover bounce-click font-heading">
+                                TRY AGAIN 🔄
+                            </button>
+                            <button onclick="goToPage(1)" class="px-6 py-3 bg-pastelPink-dark border-2 border-pink-400 text-white rounded-2xl font-bold shadow bounce-hover bounce-click font-heading">
+                                FINISH LESSON 🎉
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function submitQuiz() {
+            if (Object.keys(quizAnswers).length < finalQuizQuestions.length) {
+                playSound('incorrect');
+                alert("Please answer all 10 questions before submitting!");
+                return;
+            }
+            playSound('correct');
+            quizSubmitted = true;
+            renderPage();
+        }
+
+        // INITIALIZE ON LOAD
+        window.onload = function() {
+            renderPage();
+        };
+    </script>
+</body>
+</html>
