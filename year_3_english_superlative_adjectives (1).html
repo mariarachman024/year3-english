@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superlative Adjectives | SK PUTERI Year 3</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Google Fonts: Fredoka & Quicksand for playful primary school aesthetics -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pastelBlue: '#E0F2FE',
+                        pastelPink: '#FCE7F3',
+                        pastelYellow: '#FEF9C3',
+                        pastelGreen: '#DCFCE7',
+                        pastelPurple: '#F3E8FF',
+                        brandBlue: '#0284C7',
+                        brandPurple: '#9333EA',
+                        brandPink: '#EC4899',
+                        brandYellow: '#EAB308',
+                        brandGreen: '#16A34A'
+                    },
+                    fontFamily: {
+                        fredoka: ['Fredoka', 'sans-serif'],
+                        quicksand: ['Quicksand', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #e0f2fe 0%, #fce7f3 50%, #f3e8ff 100%);
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, .font-heading {
+            font-family: 'Fredoka', cursive;
+        }
+
+        /* Floating animations for cute decorations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
+        }
+
+        @keyframes bounce-gentle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        @keyframes pulse-subtle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .animate-bounce-gentle {
+            animation: bounce-gentle 2s infinite;
+        }
+
+        .animate-pulse-subtle {
+            animation: pulse-subtle 3s ease-in-out infinite;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Certificate Print Styling */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printable-certificate, #printable-certificate * {
+                visibility: visible;
+            }
+            #printable-certificate {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="text-slate-800 flex flex-col min-h-screen selection:bg-brandPink selection:text-white pb-12">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md shadow-sm border-b border-pink-100">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('welcome')">
+                <div class="bg-gradient-to-tr from-brandPink to-purple-500 text-white w-10 h-10 rounded-2xl flex items-center justify-center font-bold font-heading text-xl shadow-md">
+                    SK
+                </div>
+                <div>
+                    <h1 class="text-lg md:text-xl font-bold text-slate-800 leading-tight font-heading">SK PUTERI</h1>
+                    <p class="text-xs font-semibold text-brandBlue">English Year 3 • Grammar</p>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <nav class="flex items-center space-x-1 md:space-x-2">
+                <button onclick="navigateTo('welcome')" id="nav-welcome" class="nav-btn px-3 py-1.5 rounded-xl text-xs md:text-sm font-bold transition flex items-center space-x-1 bg-pink-100 text-pink-700">
+                    <span>🏠</span> <span class="hidden sm:inline">Home</span>
+                </button>
+                <button onclick="navigateTo('objectives')" id="nav-objectives" class="nav-btn px-3 py-1.5 rounded-xl text-xs md:text-sm font-bold text-slate-600 hover:bg-slate-100 transition flex items-center space-x-1">
+                    <span>🎯</span> <span class="hidden sm:inline">Objectives</span>
+                </button>
+                <button onclick="navigateTo('notes')" id="nav-notes" class="nav-btn px-3 py-1.5 rounded-xl text-xs md:text-sm font-bold text-slate-600 hover:bg-slate-100 transition flex items-center space-x-1">
+                    <span>📖</span> <span class="hidden sm:inline">Notes</span>
+                </button>
+                <button onclick="checkNameBeforeQuiz()" id="nav-practice" class="nav-btn px-3 py-1.5 rounded-xl text-xs md:text-sm font-bold text-slate-600 hover:bg-slate-100 transition flex items-center space-x-1">
+                    <span>✏️</span> <span class="hidden sm:inline">Practice</span>
+                </button>
+                <button onclick="toggleAudio()" id="sound-toggle-btn" class="p-2 rounded-xl bg-amber-100 text-amber-700 hover:bg-amber-200 transition" title="Toggle Chime Sounds">
+                    <span id="sound-icon">🔊</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-6">
+
+        <!-- SECTION 1: WELCOME PAGE -->
+        <section id="section-welcome" class="page-section space-y-6">
+            <div class="bg-white/90 backdrop-blur rounded-3xl p-6 sm:p-10 shadow-xl border-4 border-white relative overflow-hidden text-center">
+                
+                <!-- Background Floating Decorative SVGs -->
+                <div class="absolute -top-6 -left-6 text-yellow-300 animate-float opacity-70">
+                    <svg class="w-20 h-20 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <div class="absolute top-10 -right-6 text-pink-300 animate-float opacity-70" style="animation-delay: 1.5s;">
+                    <svg class="w-16 h-16 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </div>
+
+                <!-- Header Info Badges -->
+                <div class="inline-flex flex-wrap items-center justify-center gap-2 mb-4">
+                    <span class="bg-blue-100 text-blue-800 text-xs sm:text-sm px-4 py-1.5 rounded-full font-bold border border-blue-200 shadow-sm">
+                        🏫 SK PUTERI
+                    </span>
+                    <span class="bg-purple-100 text-purple-800 text-xs sm:text-sm px-4 py-1.5 rounded-full font-bold border border-purple-200 shadow-sm">
+                        📘 English Language | Year 3
+                    </span>
+                </div>
+
+                <!-- Main Title & Topic -->
+                <div class="my-4">
+                    <span class="text-sm uppercase tracking-wider text-slate-500 font-bold block mb-1">Grammar Focus</span>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 font-heading leading-tight">
+                        Superlative Adjectives
+                    </h1>
+                    <p class="text-base sm:text-lg text-slate-600 font-semibold mt-2">
+                        Learn how to describe the <span class="text-pink-600 underline decoration-wavy decoration-pink-400">tallest</span>, <span class="text-purple-600 underline decoration-wavy decoration-purple-400">fastest</span>, and <span class="text-indigo-600 underline decoration-wavy decoration-indigo-400">most amazing</span> things! 🌟
+                    </p>
+                </div>
+
+                <!-- Teacher Card -->
+                <div class="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-200 rounded-2xl p-4 my-6 inline-flex items-center space-x-3 text-left max-w-sm mx-auto shadow-sm">
+                    <div class="w-12 h-12 rounded-full bg-amber-200 flex items-center justify-center text-2xl shadow">
+                        👩‍🏫
+                    </div>
+                    <div>
+                        <p class="text-xs text-amber-700 font-bold uppercase tracking-wider">Prepared by</p>
+                        <p class="text-base font-bold text-slate-800 font-heading">Teacher Maria A. Rachman</p>
+                    </div>
+                </div>
+
+                <!-- Pupil Name Input Form -->
+                <div class="max-w-md mx-auto bg-slate-50 border-2 border-slate-200 rounded-2xl p-4 sm:p-6 mb-6 text-left shadow-inner">
+                    <label for="pupil-name-input" class="block text-sm font-bold text-slate-700 mb-2 flex items-center space-x-1">
+                        <span>👋 What is your full name?</span>
+                    </label>
+                    <input type="text" id="pupil-name-input" placeholder="e.g. Nur Aisyah binti Ahmad" 
+                        class="w-full px-4 py-3 rounded-xl border-2 border-purple-200 focus:border-brandPurple focus:ring-2 focus:ring-purple-200 outline-none text-slate-800 font-semibold text-base transition bg-white" />
+                    <p id="welcome-name-error" class="text-xs text-rose-600 font-bold mt-2 hidden">Please enter your full name before starting the quiz.</p>
+                    <p class="text-xs text-slate-500 mt-2">✨ Enter your name so your teacher can see your results certificate!</p>
+                </div>
+
+                <!-- Start Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button onclick="startLearningProcess('notes')" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold text-lg rounded-2xl shadow-lg transform hover:-translate-y-1 transition-all active:translate-y-0 font-heading flex items-center justify-center space-x-2">
+                        <span>🚀 START LEARNING</span>
+                    </button>
+                    <button onclick="startLearningProcess('practice')" class="w-full sm:w-auto px-6 py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-lg rounded-2xl shadow-lg transform hover:-translate-y-1 transition-all active:translate-y-0 font-heading flex items-center justify-center space-x-2">
+                        <span>✏️ GO TO PRACTICE</span>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 2: LEARNING OBJECTIVES -->
+        <section id="section-objectives" class="page-section hidden space-y-6">
+            <div class="bg-white/90 backdrop-blur rounded-3xl p-6 sm:p-8 shadow-xl border-4 border-white">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="p-3 bg-purple-100 text-purple-700 rounded-2xl text-2xl">🎯</div>
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 font-heading">Learning Objectives</h2>
+                        <p class="text-slate-500 text-sm font-semibold">What will you be able to do today?</p>
+                    </div>
+                </div>
+
+                <p class="text-base sm:text-lg font-bold text-slate-700 mb-6 bg-purple-50 p-4 rounded-2xl border border-purple-100">
+                    By the end of the lesson, pupils should be able to:
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+                    
+                    <!-- Objective 1 -->
+                    <div class="bg-gradient-to-b from-blue-50 to-sky-50 border-2 border-blue-200 rounded-2xl p-5 flex flex-col items-center text-center hover:shadow-md transition">
+                        <div class="w-14 h-14 bg-blue-500 text-white rounded-2xl flex items-center justify-center text-2xl font-bold font-heading mb-4 shadow-md">
+                            1
+                        </div>
+                        <h3 class="text-lg font-bold text-blue-900 font-heading mb-2">Understand</h3>
+                        <p class="text-slate-600 text-sm font-medium">
+                            Understand what <strong class="text-blue-700">superlative adjectives</strong> are and how they describe things.
+                        </p>
+                    </div>
+
+                    <!-- Objective 2 -->
+                    <div class="bg-gradient-to-b from-pink-50 to-rose-50 border-2 border-pink-200 rounded-2xl p-5 flex flex-col items-center text-center hover:shadow-md transition">
+                        <div class="w-14 h-14 bg-pink-500 text-white rounded-2xl flex items-center justify-center text-2xl font-bold font-heading mb-4 shadow-md">
+                            2
+                        </div>
+                        <h3 class="text-lg font-bold text-pink-900 font-heading mb-2">Identify</h3>
+                        <p class="text-slate-600 text-sm font-medium">
+                            Identify superlative adjectives inside different sentences accurately.
+                        </p>
+                    </div>
+
+                    <!-- Objective 3 -->
+                    <div class="bg-gradient-to-b from-amber-50 to-yellow-50 border-2 border-amber-200 rounded-2xl p-5 flex flex-col items-center text-center hover:shadow-md transition">
+                        <div class="w-14 h-14 bg-amber-500 text-white rounded-2xl flex items-center justify-center text-2xl font-bold font-heading mb-4 shadow-md">
+                            3
+                        </div>
+                        <h3 class="text-lg font-bold text-amber-900 font-heading mb-2">Use Correctly</h3>
+                        <p class="text-slate-600 text-sm font-medium">
+                            Use superlative adjectives correctly when speaking and writing in English!
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="mt-8 text-center pt-4 border-t border-slate-100 flex justify-between items-center">
+                    <button onclick="navigateTo('welcome')" class="px-5 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold hover:bg-slate-200 transition">
+                        ⬅️ Back
+                    </button>
+                    <button onclick="navigateTo('notes')" class="px-6 py-2.5 rounded-xl bg-brandPurple text-white font-bold hover:bg-purple-700 shadow transition flex items-center space-x-2">
+                        <span>Read Grammar Notes</span> <span>➡️</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: GRAMMAR NOTES -->
+        <section id="section-notes" class="page-section hidden space-y-6">
+            <div class="bg-white/90 backdrop-blur rounded-3xl p-6 sm:p-8 shadow-xl border-4 border-white">
+                
+                <!-- Notes Section Title -->
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="p-3 bg-pink-100 text-pink-700 rounded-2xl text-2xl">📖</div>
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 font-heading">Grammar Notes</h2>
+                        <p class="text-slate-500 text-sm font-semibold">Superlative Adjectives Rules & Examples</p>
+                    </div>
+                </div>
+
+                <!-- Explanation Box -->
+                <div class="bg-gradient-to-r from-amber-50 via-yellow-50 to-orange-50 border-2 border-amber-200 rounded-2xl p-5 mb-8 shadow-sm">
+                    <h3 class="text-lg font-bold text-amber-900 font-heading flex items-center space-x-2">
+                        <span>💡 What is a Superlative Adjective?</span>
+                    </h3>
+                    <p class="text-slate-700 text-sm sm:text-base mt-2 leading-relaxed">
+                        We use a <strong>superlative adjective</strong> when we compare <strong>one person, animal or thing with a whole group</strong> (3 or more).
+                    </p>
+                    <div class="mt-3 bg-white/80 p-3 rounded-xl border border-amber-200 font-semibold text-slate-800 text-sm flex items-center space-x-2">
+                        <span>📌 <strong>Important Rule:</strong> Usually, we put <span class="bg-yellow-200 px-2 py-0.5 rounded text-amber-900 font-bold">"the"</span> before a superlative adjective!</span>
+                    </div>
+                </div>
+
+                <!-- Interactive Comparison SVG Illustration Section -->
+                <div class="mb-10 bg-slate-50 border-2 border-purple-100 rounded-3xl p-6">
+                    <h3 class="text-xl font-bold text-purple-900 font-heading text-center mb-4">
+                        🐾 Animal Comparison Example
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+                        
+                        <!-- Cat -->
+                        <div class="bg-white rounded-2xl p-4 border-2 border-pink-200 text-center shadow-sm flex flex-col items-center">
+                            <div class="h-28 flex items-center justify-center">
+                                <!-- Cute Cat SVG -->
+                                <svg class="w-20 h-20" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="55" r="35" fill="#f472b6" />
+                                    <polygon points="25,35 15,10 40,25" fill="#f472b6" />
+                                    <polygon points="75,35 85,10 60,25" fill="#f472b6" />
+                                    <circle cx="38" cy="50" r="5" fill="#fff" /><circle cx="38" cy="50" r="2" fill="#000" />
+                                    <circle cx="62" cy="50" r="5" fill="#fff" /><circle cx="62" cy="50" r="2" fill="#000" />
+                                    <polygon points="50,60 45,55 55,55" fill="#be185d" />
+                                    <path d="M 40 65 Q 50 72 60 65" stroke="#be185d" stroke-width="2" fill="none" />
+                                </svg>
+                            </div>
+                            <span class="text-xs font-bold text-pink-500 uppercase tracking-wider mt-2">Smallest</span>
+                            <p class="text-sm font-bold text-slate-800 mt-1">
+                                The cat is <span class="bg-pink-100 text-pink-700 px-2 py-0.5 rounded font-bold">the smallest</span>.
+                            </p>
+                        </div>
+
+                        <!-- Cheetah -->
+                        <div class="bg-white rounded-2xl p-4 border-2 border-yellow-200 text-center shadow-sm flex flex-col items-center">
+                            <div class="h-28 flex items-center justify-center">
+                                <!-- Cute Cheetah SVG -->
+                                <svg class="w-24 h-24" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="38" fill="#f59e0b" />
+                                    <circle cx="25" cy="20" r="12" fill="#f59e0b" />
+                                    <circle cx="75" cy="20" r="12" fill="#f59e0b" />
+                                    <circle cx="25" cy="20" r="6" fill="#b45309" />
+                                    <circle cx="75" cy="20" r="6" fill="#b45309" />
+                                    <!-- Spots -->
+                                    <circle cx="30" cy="40" r="3" fill="#78350f" />
+                                    <circle cx="70" cy="40" r="3" fill="#78350f" />
+                                    <circle cx="50" cy="30" r="3" fill="#78350f" />
+                                    <!-- Eyes -->
+                                    <circle cx="38" cy="50" r="5" fill="#fff" /><circle cx="38" cy="50" r="2" fill="#000" />
+                                    <circle cx="62" cy="50" r="5" fill="#fff" /><circle cx="62" cy="50" r="2" fill="#000" />
+                                    <polygon points="50,60 45,56 55,56" fill="#78350f" />
+                                </svg>
+                            </div>
+                            <span class="text-xs font-bold text-amber-500 uppercase tracking-wider mt-2">Fastest</span>
+                            <p class="text-sm font-bold text-slate-800 mt-1">
+                                The cheetah is <span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">the fastest</span>.
+                            </p>
+                        </div>
+
+                        <!-- Elephant -->
+                        <div class="bg-white rounded-2xl p-4 border-2 border-blue-200 text-center shadow-sm flex flex-col items-center">
+                            <div class="h-28 flex items-center justify-center">
+                                <!-- Cute Elephant SVG -->
+                                <svg class="w-28 h-28" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="42" fill="#94a3b8" />
+                                    <circle cx="15" cy="45" r="18" fill="#cbd5e1" />
+                                    <circle cx="85" cy="45" r="18" fill="#cbd5e1" />
+                                    <!-- Eyes -->
+                                    <circle cx="38" cy="45" r="5" fill="#fff" /><circle cx="38" cy="45" r="2.5" fill="#000" />
+                                    <circle cx="62" cy="45" r="5" fill="#fff" /><circle cx="62" cy="45" r="2.5" fill="#000" />
+                                    <!-- Trunk -->
+                                    <path d="M 50 55 C 50 75 65 75 65 68" stroke="#64748b" stroke-width="8" stroke-linecap="round" fill="none" />
+                                </svg>
+                            </div>
+                            <span class="text-xs font-bold text-blue-500 uppercase tracking-wider mt-2">Biggest</span>
+                            <p class="text-sm font-bold text-slate-800 mt-1">
+                                The elephant is <span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-bold">the biggest</span>.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Grammar Rules Accordion Cards -->
+                <h3 class="text-xl font-bold text-slate-800 font-heading mb-4">
+                    6 Simple Grammar Rules to Remember:
+                </h3>
+
+                <div class="space-y-4">
+                    
+                    <!-- Rule 1 -->
+                    <div class="bg-blue-50/80 border-2 border-blue-200 rounded-2xl p-4 sm:p-5">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <span class="bg-blue-500 text-white text-xs font-bold px-2.5 py-1 rounded-lg">Rule 1</span>
+                            <h4 class="text-base sm:text-lg font-bold text-blue-900 font-heading">Short Adjectives: add "-est"</h4>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-3 text-sm">
+                            <div class="bg-white p-3 rounded-xl border border-blue-100 shadow-sm">
+                                tall ➔ <strong class="text-blue-700">the tallest</strong>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-blue-100 shadow-sm">
+                                small ➔ <strong class="text-blue-700">the smallest</strong>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-blue-100 shadow-sm">
+                                fast ➔ <strong class="text-blue-700">the fastest</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rule 2 -->
+                    <div class="bg-emerald-50/80 border-2 border-emerald-200 rounded-2xl p-4 sm:p-5">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <span class="bg-emerald-600 text-white text-xs font-bold px-2.5 py-1 rounded-lg">Rule 2</span>
+                            <h4 class="text-base sm:text-lg font-bold text-emerald-900 font-heading">Ending in "-e": add "-st"</h4>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-3 text-sm">
+                            <div class="bg-white p-3 rounded-xl border border-emerald-100 shadow-sm">
+                                large ➔ <strong class="text-emerald-700">the largest</strong>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-emerald-100 shadow-sm">
+                                nice ➔ <strong class="text-emerald-700">the nicest</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rule 3 -->
+                    <div class="bg-orange-50/80 border-2 border-orange-200 rounded-2xl p-4 sm:p-5">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <span class="bg-orange-500 text-white text-xs font-bold px-2.5 py-1 rounded-lg">Rule 3</span>
+                            <h4 class="text-base sm:text-lg font-bold text-orange-900 font-heading">Consonant + Vowel + Consonant: Double final letter + "-est"</h4>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-3 text-sm">
+                            <div class="bg-white p-3 rounded-xl border border-orange-100 shadow-sm">
+                                big ➔ <strong class="text-orange-700">the biggest</strong> (double 'g')
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-orange-100 shadow-sm">
+                                hot ➔ <strong class="text-orange-700">the hottest</strong> (double 't')
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rule 4 -->
+                    <div class="bg-purple-50/80 border-2 border-purple-200 rounded-2xl p-4 sm:p-5">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <span class="bg-purple-600 text-white text-xs font-bold px-2.5 py-1 rounded-lg">Rule 4</span>
+                            <h4 class="text-base sm:text-lg font-bold text-purple-900 font-heading">Ending in consonant + "y": Change "y" to "i" + "-est"</h4>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-3 text-sm">
+                            <div class="bg-white p-3 rounded-xl border border-purple-100 shadow-sm">
+                                happy ➔ <strong class="text-purple-700">the happiest</strong>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-purple-100 shadow-sm">
+                                funny ➔ <strong class="text-purple-700">the funniest</strong>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-purple-100 shadow-sm">
+                                easy ➔ <strong class="text-purple-700">the easiest</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rule 5 -->
+                    <div class="bg-pink-50/80 border-2 border-pink-200 rounded-2xl p-4 sm:p-5">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <span class="bg-pink-500 text-white text-xs font-bold px-2.5 py-1 rounded-lg">Rule 5</span>
+                            <h4 class="text-base sm:text-lg font-bold text-pink-900 font-heading">Longer Adjectives: Use "the most"</h4>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-3 text-sm">
+                            <div class="bg-white p-3 rounded-xl border border-pink-100 shadow-sm">
+                                beautiful ➔ <strong class="text-pink-700">the most beautiful</strong>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-pink-100 shadow-sm">
+                                interesting ➔ <strong class="text-pink-700">the most interesting</strong>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-pink-100 shadow-sm">
+                                expensive ➔ <strong class="text-pink-700">the most expensive</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rule 6 -->
+                    <div class="bg-indigo-50/80 border-2 border-indigo-200 rounded-2xl p-4 sm:p-5">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <span class="bg-indigo-600 text-white text-xs font-bold px-2.5 py-1 rounded-lg">Rule 6</span>
+                            <h4 class="text-base sm:text-lg font-bold text-indigo-900 font-heading">Irregular Adjectives (Special words!)</h4>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-3 text-sm">
+                            <div class="bg-white p-3 rounded-xl border border-indigo-100 shadow-sm">
+                                good ➔ <strong class="text-indigo-700">the best</strong>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-indigo-100 shadow-sm">
+                                bad ➔ <strong class="text-indigo-700">the worst</strong>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-indigo-100 shadow-sm">
+                                far ➔ <strong class="text-indigo-700">the farthest</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="mt-8 text-center pt-4 border-t border-slate-100 flex justify-between items-center">
+                    <button onclick="navigateTo('objectives')" class="px-5 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold hover:bg-slate-200 transition">
+                        ⬅️ Objectives
+                    </button>
+                    <button onclick="checkNameBeforeQuiz()" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold text-lg hover:from-emerald-600 hover:to-teal-700 shadow-lg transition flex items-center space-x-2 font-heading">
+                        <span>Ready for Practice!</span> <span>✏️</span>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 4: PRACTICE TIME (QUIZ) -->
+        <section id="section-practice" class="page-section hidden space-y-6">
+            <div class="bg-white/90 backdrop-blur rounded-3xl p-6 sm:p-8 shadow-xl border-4 border-white relative">
+                
+                <!-- Quiz Progress Bar -->
+                <div class="mb-6">
+                    <div class="flex items-center justify-between text-sm font-bold text-slate-600 mb-2">
+                        <span id="quiz-question-counter" class="font-heading text-purple-700 text-base">Question 1 of 10</span>
+                        <span id="quiz-score-badge" class="bg-yellow-100 text-amber-800 px-3 py-1 rounded-full text-xs border border-amber-200">
+                            ⭐ Score: <span id="current-score-num">0</span>/10
+                        </span>
+                    </div>
+                    <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
+                        <div id="quiz-progress-fill" class="h-full bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-300 w-[10%]"></div>
+                    </div>
+                </div>
+
+                <!-- Question Container Card -->
+                <div id="question-card" class="bg-slate-50 border-2 border-purple-100 rounded-3xl p-6 sm:p-8 mb-6">
+                    <div class="text-xs font-bold uppercase tracking-wider text-purple-600 mb-2 font-heading">
+                        Select the correct option:
+                    </div>
+                    
+                    <h3 id="question-text" class="text-xl sm:text-2xl font-bold text-slate-800 font-heading mb-6 leading-relaxed">
+                        1. A giraffe is ______ animal in the zoo.
+                    </h3>
+
+                    <!-- Answer Options Grid -->
+                    <div id="options-container" class="grid grid-cols-1 gap-3">
+                        <!-- Options generated dynamically via JS -->
+                    </div>
+
+                    <!-- Immediate Feedback Container -->
+                    <div id="feedback-box" class="hidden mt-6 p-4 rounded-2xl border-2 transition-all animate-bounce-gentle">
+                        <div class="flex items-start space-x-3">
+                            <span id="feedback-icon" class="text-3xl"></span>
+                            <div>
+                                <h4 id="feedback-title" class="font-bold font-heading text-lg"></h4>
+                                <p id="feedback-explanation" class="text-sm font-medium mt-1 leading-relaxed"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Action Controls -->
+                <div class="flex items-center justify-between pt-2">
+                    <button onclick="navigateTo('notes')" class="px-4 py-2.5 rounded-xl bg-slate-100 text-slate-600 text-sm font-bold hover:bg-slate-200 transition">
+                        📖 Check Notes
+                    </button>
+                    
+                    <button id="next-question-btn" onclick="nextQuestion()" disabled class="px-8 py-3.5 rounded-2xl bg-slate-300 text-slate-500 font-bold text-base cursor-not-allowed transition-all font-heading shadow flex items-center space-x-2">
+                        <span>Next Question</span> <span>➡️</span>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 5: RESULTS PAGE & FINAL INSTRUCTIONS -->
+        <section id="section-results" class="page-section hidden space-y-6">
+            
+            <!-- Printable / Screenshot Certificate Box -->
+            <div id="printable-certificate" class="bg-white/95 backdrop-blur rounded-3xl p-6 sm:p-10 shadow-2xl border-8 border-purple-200 text-center relative overflow-hidden">
+                
+                <!-- Trophy / Badge SVG Header -->
+                <div class="inline-block p-4 bg-amber-100 text-amber-500 rounded-3xl mb-4 shadow-inner">
+                    <svg class="w-16 h-16 sm:w-20 sm:h-20 mx-auto fill-current animate-bounce-gentle" viewBox="0 0 24 24">
+                        <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0011 15.9V18H8v2h8v-2h-3v-2.1c2.28-.46 4-2.48 4-4.9V8c0-1.1-.9-2-2-2zm-12 5c-1.1 0-2-.9-2-2V7h2v3zm12 0h-2V7h2v3z"/>
+                    </svg>
+                </div>
+
+                <div class="text-xs sm:text-sm font-bold uppercase tracking-widest text-purple-600 mb-1">
+                    Official Learning Certificate
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800 font-heading">
+                    SK PUTERI
+                </h2>
+                <p class="text-slate-500 text-sm font-bold mb-6">English Language Year 3 • Grammar Focus: Superlative Adjectives</p>
+
+                <!-- Pupil Name Banner -->
+                <div class="my-4 bg-gradient-to-r from-purple-50 via-pink-50 to-blue-50 border-2 border-purple-200 rounded-2xl p-4 max-w-xl mx-auto shadow-sm">
+                    <p class="text-xs uppercase font-bold text-slate-500 tracking-wider">This certificate is awarded to</p>
+                    <h3 id="result-pupil-name" class="text-2xl sm:text-3xl font-extrabold text-brandPurple font-heading my-1">
+                        [ Pupil's Name ]
+                    </h3>
+                    <p class="text-xs font-semibold text-slate-600">Prepared by: Teacher Maria A. Rachman</p>
+                </div>
+
+                <!-- Score & Percentage Display -->
+                <div class="grid grid-cols-2 gap-4 max-w-sm mx-auto my-6">
+                    <div class="bg-blue-50 border-2 border-blue-200 rounded-2xl p-4">
+                        <span class="text-xs font-bold text-blue-600 uppercase tracking-wider block">Correct Answers</span>
+                        <span id="result-correct-count" class="text-3xl sm:text-4xl font-extrabold text-blue-800 font-heading">0/10</span>
+                    </div>
+                    <div class="bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4">
+                        <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider block">Score Percentage</span>
+                        <span id="result-percentage" class="text-3xl sm:text-4xl font-extrabold text-emerald-700 font-heading">0%</span>
+                    </div>
+                </div>
+
+                <!-- Friendly Teacher Message Box -->
+                <div id="result-feedback-card" class="max-w-xl mx-auto p-4 rounded-2xl border-2 mb-6 text-sm font-bold leading-relaxed shadow-sm">
+                    <!-- Dynamic feedback message goes here -->
+                </div>
+
+                <!-- Restart Button -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <button onclick="restartQuiz()" class="w-full sm:w-auto px-6 py-3 bg-brandPurple hover:bg-purple-700 text-white font-bold rounded-2xl shadow transition font-heading flex items-center justify-center space-x-2">
+                        <span>🔄 TRY AGAIN</span>
+                    </button>
+                    <button onclick="window.print()" class="w-full sm:w-auto px-6 py-3 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-2xl shadow transition font-heading flex items-center justify-center space-x-2">
+                        <span>🖨️ PRINT / SAVE AS PDF</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- SECTION 6: FINAL INSTRUCTIONS BOX -->
+            <div class="bg-gradient-to-r from-yellow-50 to-amber-50 border-4 border-amber-200 rounded-3xl p-6 sm:p-8 shadow-lg">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="p-2.5 bg-amber-200 text-amber-800 rounded-xl text-2xl">📋</div>
+                    <h3 class="text-xl font-bold text-amber-900 font-heading">Final Instructions for Google Classroom</h3>
+                </div>
+
+                <ol class="space-y-2.5 text-sm sm:text-base text-slate-700 font-semibold list-decimal list-inside bg-white/80 p-5 rounded-2xl border border-amber-200">
+                    <li class="p-1">Read the grammar notes carefully.</li>
+                    <li class="p-1">Complete all 10 questions.</li>
+                    <li class="p-1">Check your name and percentage score on the certificate above.</li>
+                    <li class="p-1"><strong class="text-amber-900">Take a screenshot</strong> of your results certificate above.</li>
+                    <li class="p-1"><strong class="text-amber-900">Submit your screenshot</strong> in Google Classroom.</li>
+                </ol>
+
+                <div class="mt-6 text-center bg-amber-200/70 p-4 rounded-2xl border border-amber-300">
+                    <p class="text-lg font-extrabold text-amber-900 font-heading">
+                        “Great job, Year 3! Keep learning and keep shining!” ✨🌟
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Name Input Prompt Modal (If student directly jumps to practice without name) -->
+    <div id="name-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border-4 border-purple-200 text-center animate-pulse-subtle">
+            <div class="text-4xl mb-3">✏️</div>
+            <h3 class="text-2xl font-bold text-slate-800 font-heading mb-2">Enter Your Full Name</h3>
+            <p class="text-slate-600 text-sm mb-4 font-semibold">Please enter your name before starting the practice quiz so your teacher can award your certificate!</p>
+            
+            <input type="text" id="modal-name-input" placeholder="e.g. Adam bin Harun" 
+                class="w-full px-4 py-3 rounded-xl border-2 border-purple-200 focus:border-brandPurple focus:ring-2 focus:ring-purple-200 outline-none text-slate-800 font-semibold text-base mb-2 bg-slate-50" />
+            <p id="modal-name-error" class="text-xs text-rose-600 font-bold mb-4 hidden text-left">Please enter your full name before starting the quiz.</p>
+            
+            <div class="flex items-center justify-end space-x-3">
+                <button onclick="closeNameModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 text-slate-600 font-bold hover:bg-slate-200 text-sm">
+                    Cancel
+                </button>
+                <button onclick="saveNameAndStartQuiz()" class="px-6 py-2.5 rounded-xl bg-brandPurple text-white font-bold hover:bg-purple-700 shadow text-sm font-heading">
+                    Start Practice 🚀
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        
+        // App State
+        let pupilName = "";
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answeredQuestions = [];
+        let isAudioMuted = false;
+
+        // Audio Context for Chimes (Web Audio API - No external files required)
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioCtx = null;
+
+        function playSound(type) {
+            if (isAudioMuted) return;
+            try {
+                if (!audioCtx) audioCtx = new AudioContext();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                if (type === 'correct') {
+                    // Cheerful double chime
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+                    osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1); // E5
+                    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.3);
+                } else if (type === 'wrong') {
+                    // Soft low tone
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(220, audioCtx.currentTime); // A3
+                    osc.frequency.setValueAtTime(196, audioCtx.currentTime + 0.15); // G3
+                    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.35);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.35);
+                } else if (type === 'complete') {
+                    // Fanfare flourish
+                    const now = audioCtx.currentTime;
+                    [523.25, 659.25, 783.99, 1046.50].forEach((freq, idx) => {
+                        const o = audioCtx.createOscillator();
+                        const g = audioCtx.createGain();
+                        o.type = 'sine';
+                        o.frequency.value = freq;
+                        o.connect(g);
+                        g.connect(audioCtx.destination);
+                        g.gain.setValueAtTime(0.25, now + idx * 0.1);
+                        g.gain.exponentialRampToValueAtTime(0.01, now + idx * 0.1 + 0.3);
+                        o.start(now + idx * 0.1);
+                        o.stop(now + idx * 0.1 + 0.3);
+                    });
+                }
+            } catch (e) {
+                console.log("Audio not supported or blocked", e);
+            }
+        }
+
+        function toggleAudio() {
+            isAudioMuted = !isAudioMuted;
+            document.getElementById('sound-icon').innerText = isAudioMuted ? '🔇' : '🔊';
+        }
+
+        // Quiz Questions Data (10 exact questions specified)
+        const quizQuestions = [
+            {
+                question: "1. A giraffe is ______ animal in the zoo.",
+                options: ["tallest", "taller", "the tallest"],
+                correctIndex: 2,
+                explanation: "We use 'the tallest' because we are comparing the giraffe to all animals in the zoo."
+            },
+            {
+                question: "2. Of all the bags, mine is ______.",
+                options: ["the biggest", "bigger", "big"],
+                correctIndex: 0,
+                explanation: "We use 'the biggest' because we are comparing one bag with all the other bags."
+            },
+            {
+                question: "3. Mount Everest is ______ mountain in the world.",
+                options: ["the highest", "higher", "high"],
+                correctIndex: 0,
+                explanation: "We use 'the highest' to compare Mount Everest to all mountains in the world!"
+            },
+            {
+                question: "4. This is ______ cake I have ever eaten.",
+                options: ["the most delicious", "more delicious", "delicious"],
+                correctIndex: 0,
+                explanation: "For longer words like 'delicious', we add 'the most' before the word."
+            },
+            {
+                question: "5. Ali is ______ boy in his family.",
+                options: ["the youngest", "younger", "young"],
+                correctIndex: 0,
+                explanation: "Ali is compared to everyone in his whole family, so we use 'the youngest'."
+            },
+            {
+                question: "6. The blue whale is ______ animal in the world.",
+                options: ["the biggest", "bigger", "big"],
+                correctIndex: 0,
+                explanation: "For CVC words like 'big', double the final 'g' and add '-est' -> 'the biggest'."
+            },
+            {
+                question: "7. Today is ______ day of the week for me.",
+                options: ["the happiest", "happier", "happy"],
+                correctIndex: 0,
+                explanation: "For words ending in '-y' like 'happy', change 'y' to 'i' and add '-est' -> 'the happiest'."
+            },
+            {
+                question: "8. This is ______ story in the book.",
+                options: ["the most interesting", "more interesting", "interesting"],
+                correctIndex: 0,
+                explanation: "'Interesting' is a long word, so we use 'the most interesting'."
+            },
+            {
+                question: "9. She is ______ singer in the competition.",
+                options: ["the best", "better", "good"],
+                correctIndex: 0,
+                explanation: "'Good' is an irregular adjective! Its superlative form is 'the best'."
+            },
+            {
+                question: "10. That was ______ film I have ever watched.",
+                options: ["the worst", "worse", "bad"],
+                correctIndex: 0,
+                explanation: "'Bad' is an irregular adjective! Its superlative form is 'the worst'."
+            }
+        ];
+
+
+        function navigateTo(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.add('hidden'));
+            
+            // Show target section
+            const target = document.getElementById('section-' + sectionId);
+            if (target) {
+                target.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Update Navigation Button Active Styles
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-pink-100', 'text-pink-700');
+                btn.classList.add('text-slate-600');
+            });
+
+            const activeBtn = document.getElementById('nav-' + sectionId);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-slate-600');
+                activeBtn.classList.add('bg-pink-100', 'text-pink-700');
+            }
+        }
+
+        function checkNameBeforeQuiz() {
+            syncPupilName();
+            const welcomeErr = document.getElementById('welcome-name-error');
+            
+            if (!pupilName || pupilName.trim() === "") {
+                if (welcomeErr) welcomeErr.classList.remove('hidden');
+                document.getElementById('name-modal').classList.remove('hidden');
+            } else {
+                if (welcomeErr) welcomeErr.classList.add('hidden');
+                navigateTo('practice');
+                renderQuestion();
+            }
+        }
+
+        function syncPupilName() {
+            const inputVal = document.getElementById('pupil-name-input').value;
+            if (inputVal && inputVal.trim() !== "") {
+                pupilName = inputVal.trim();
+            }
+        }
+
+        function closeNameModal() {
+            document.getElementById('name-modal').classList.add('hidden');
+        }
+
+        function saveNameAndStartQuiz() {
+            const modalVal = document.getElementById('modal-name-input').value;
+            const modalErr = document.getElementById('modal-name-error');
+            
+            if (!modalVal || modalVal.trim() === "") {
+                if (modalErr) modalErr.classList.remove('hidden');
+                return;
+            }
+
+            if (modalErr) modalErr.classList.add('hidden');
+            pupilName = modalVal.trim();
+            document.getElementById('pupil-name-input').value = pupilName;
+            
+            const welcomeErr = document.getElementById('welcome-name-error');
+            if (welcomeErr) welcomeErr.classList.add('hidden');
+
+            closeNameModal();
+            navigateTo('practice');
+            renderQuestion();
+        }
+
+        function startLearningProcess(targetSection) {
+            syncPupilName();
+            if (targetSection === 'practice') {
+                checkNameBeforeQuiz();
+            } else {
+                navigateTo(targetSection);
+            }
+        }
+
+
+        function renderQuestion() {
+            const q = quizQuestions[currentQuestionIndex];
+            
+            // Update Headers & Progress Bar
+            document.getElementById('quiz-question-counter').innerText = `Question ${currentQuestionIndex + 1} of 10`;
+            document.getElementById('current-score-num').innerText = score;
+            const progressPercent = ((currentQuestionIndex + 1) / 10) * 100;
+            document.getElementById('quiz-progress-fill').style.width = `${progressPercent}%`;
+
+            // Question Text
+            document.getElementById('question-text').innerText = q.question;
+
+            // Options Container
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+
+            // Feedback Box Reset
+            const feedbackBox = document.getElementById('feedback-box');
+            feedbackBox.classList.add('hidden');
+            feedbackBox.className = "hidden mt-6 p-4 rounded-2xl border-2 transition-all";
+
+            // Next Button Reset
+            const nextBtn = document.getElementById('next-question-btn');
+            nextBtn.disabled = true;
+            nextBtn.className = "px-8 py-3.5 rounded-2xl bg-slate-300 text-slate-500 font-bold text-base cursor-not-allowed transition-all font-heading shadow flex items-center space-x-2";
+
+            const hasAnswered = answeredQuestions[currentQuestionIndex] !== undefined;
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `w-full text-left px-5 py-4 rounded-2xl font-bold text-base sm:text-lg border-2 transition-all flex items-center justify-between font-heading bg-white border-slate-200 text-slate-800 hover:border-purple-300 hover:bg-purple-50/50 shadow-sm`;
+                
+                btn.innerHTML = `
+                    <span>${opt}</span>
+                    <span class="option-icon w-6 h-6 rounded-full border-2 border-slate-300 flex items-center justify-center text-xs"></span>
+                `;
+
+                if (!hasAnswered) {
+                    btn.onclick = () => selectOption(idx);
+                } else {
+                    // Show locked answer state
+                    const selectedIdx = answeredQuestions[currentQuestionIndex];
+                    if (idx === q.correctIndex) {
+                        btn.className = `w-full text-left px-5 py-4 rounded-2xl font-bold text-base sm:text-lg border-2 transition-all flex items-center justify-between font-heading bg-emerald-50 border-emerald-500 text-emerald-800 shadow-sm`;
+                        btn.querySelector('.option-icon').innerHTML = '✓';
+                        btn.querySelector('.option-icon').className = 'w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs font-bold';
+                    } else if (idx === selectedIdx) {
+                        btn.className = `w-full text-left px-5 py-4 rounded-2xl font-bold text-base sm:text-lg border-2 transition-all flex items-center justify-between font-heading bg-rose-50 border-rose-400 text-rose-800 shadow-sm`;
+                        btn.querySelector('.option-icon').innerHTML = '✕';
+                        btn.querySelector('.option-icon').className = 'w-6 h-6 rounded-full bg-rose-500 text-white flex items-center justify-center text-xs font-bold';
+                    }
+                }
+
+                optionsContainer.appendChild(btn);
+            });
+
+            if (hasAnswered) {
+                showFeedback(answeredQuestions[currentQuestionIndex] === q.correctIndex, q.explanation);
+                unlockNextButton();
+            }
+        }
+
+        function selectOption(selectedIndex) {
+            const q = quizQuestions[currentQuestionIndex];
+            answeredQuestions[currentQuestionIndex] = selectedIndex;
+
+            const isCorrect = selectedIndex === q.correctIndex;
+            if (isCorrect) {
+                score++;
+                playSound('correct');
+            } else {
+                playSound('wrong');
+            }
+
+            document.getElementById('current-score-num').innerText = score;
+            
+            // Re-render options with visual feedback
+            renderQuestion();
+        }
+
+        function showFeedback(isCorrect, explanationText) {
+            const feedbackBox = document.getElementById('feedback-box');
+            const feedbackIcon = document.getElementById('feedback-icon');
+            const feedbackTitle = document.getElementById('feedback-title');
+            const feedbackExp = document.getElementById('feedback-explanation');
+
+            feedbackBox.classList.remove('hidden');
+
+            if (isCorrect) {
+                feedbackBox.className = "mt-6 p-4 rounded-2xl border-2 bg-emerald-50 border-emerald-300 text-emerald-900 transition-all";
+                feedbackIcon.innerText = "🎉";
+                feedbackTitle.innerText = "Correct! Well done!";
+            } else {
+                feedbackBox.className = "mt-6 p-4 rounded-2xl border-2 bg-amber-50 border-amber-300 text-amber-900 transition-all";
+                feedbackIcon.innerText = "💡";
+                feedbackTitle.innerText = "Nice try! Here's a tip:";
+            }
+
+            feedbackExp.innerText = explanationText;
+        }
+
+        function unlockNextButton() {
+            const nextBtn = document.getElementById('next-question-btn');
+            nextBtn.disabled = false;
+            nextBtn.className = "px-8 py-3.5 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-base hover:from-purple-700 hover:to-pink-700 cursor-pointer transition-all font-heading shadow-lg transform hover:-translate-y-0.5 flex items-center space-x-2";
+            
+            if (currentQuestionIndex === quizQuestions.length - 1) {
+                nextBtn.innerHTML = `<span>See Results Certificate</span> <span>🏆</span>`;
+            } else {
+                nextBtn.innerHTML = `<span>Next Question</span> <span>➡️</span>`;
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < quizQuestions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            } else {
+                showResultsPage();
+            }
+        }
+
+
+        function showResultsPage() {
+            syncPupilName();
+
+            // Populate Certificate
+            document.getElementById('result-pupil-name').innerText = pupilName;
+            document.getElementById('result-correct-count').innerText = `${score}/10`;
+            
+            const percentage = Math.round((score / 10) * 100);
+            document.getElementById('result-percentage').innerText = `${percentage}%`;
+
+            // Friendly Score Message
+            const feedbackCard = document.getElementById('result-feedback-card');
+            if (percentage === 100) {
+                feedbackCard.className = "max-w-xl mx-auto p-4 rounded-2xl border-2 bg-emerald-100 border-emerald-300 text-emerald-900 mb-6 text-sm sm:text-base font-bold shadow-sm";
+                feedbackCard.innerHTML = "🌟 PERFECT SCORE! Fantastic job! You are a Superlative Adjectives Superstar! Teacher Maria is super proud of you! 🎉";
+            } else if (percentage >= 80) {
+                feedbackCard.className = "max-w-xl mx-auto p-4 rounded-2xl border-2 bg-blue-100 border-blue-300 text-blue-900 mb-6 text-sm sm:text-base font-bold shadow-sm";
+                feedbackCard.innerHTML = "👏 EXCELLENT WORK! Great effort! You have understood superlative adjectives really well!";
+            } else if (percentage >= 60) {
+                feedbackCard.className = "max-w-xl mx-auto p-4 rounded-2xl border-2 bg-yellow-100 border-amber-300 text-amber-900 mb-6 text-sm sm:text-base font-bold shadow-sm";
+                feedbackCard.innerHTML = "👍 GOOD JOB! You passed! Read the notes again to make your grammar even stronger!";
+            } else {
+                feedbackCard.className = "max-w-xl mx-auto p-4 rounded-2xl border-2 bg-pink-100 border-pink-300 text-pink-900 mb-6 text-sm sm:text-base font-bold shadow-sm";
+                feedbackCard.innerHTML = "💪 KEEP TRYING! You can do it! Click 'Try Again' after reviewing the notes to boost your score!";
+            }
+
+            navigateTo('results');
+
+            // Sound & Confetti Effect
+            playSound('complete');
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            }
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            answeredQuestions = [];
+            navigateTo('practice');
+            renderQuestion();
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            navigateTo('welcome');
+        };
+    </script>
+</body>
+</html>
